@@ -1,5 +1,5 @@
 Desafio Ebix Outubro 2018
-Autor: Edson Mattos (edsonmattos@gmail.com)
+Autor: Edson Mattos (edsonmattos at gmail.com)
 
 * INSTRUÇÔES DE BUILD
 
