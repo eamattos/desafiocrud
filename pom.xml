@@ -8,9 +8,10 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Desafio EBIX</name>
 	<properties>
-		<spring.version>5.0.1.RELEASE</spring.version>
 		<maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <spring.version>5.0.1.RELEASE</spring.version>
+        <cxf.version>3.2.6</cxf.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,7 +33,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>5.1.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -53,6 +54,26 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.196</version>
+		</dependency>
+ 		<dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+		<dependency>
+	        <groupId>org.apache.cxf</groupId>
+	        <artifactId>cxf-rt-transports-http-jetty</artifactId>
+	        <version>${cxf.version}</version>
+   		 </dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-server</artifactId>
+		    <version>9.3.0.M0</version>
 		</dependency>
 	</dependencies>
 	<build>
