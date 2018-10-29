@@ -1,8 +1,17 @@
 package br.com.ebix.desafio.crud.model;
 
+import java.beans.Transient;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 public class Aluno {
 	private Integer id;
+	
+	//@XmlElement( required = true )
 	private String nome;
+	
+	//@XmlElement( required = true )
 	private String endereco;
 	
 	public Aluno() {

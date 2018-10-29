@@ -24,18 +24,18 @@ public class EscolaRepository {
 	}
 
 	public void insert(Escola escola) {
-		String sql = "INSERT INTO escola (nome, endereco) VALUES (:nome, :endereco)";
-		jdbcTemplate.update(sql, escola);
+		String sql = "INSERT INTO escola (nome, endereco) VALUES (?, ?)";
+		jdbcTemplate.update(sql, new Object[] { escola.getNome(), escola.getEndereco() });
 	}
 
 	public void update(Escola escola) {
-		String sql = "UPDATE escola SET nome = :nome AND endereco = :endereco";
-		jdbcTemplate.update(sql, escola);
+		String sql = "UPDATE escola SET nome = ? AND endereco = ? WHERE id = ?";
+		jdbcTemplate.update(sql, new Object[] { escola.getNome(), escola.getEndereco(), escola.getId() });
 	}
 
-	public void delete(Escola escola) {
+	public void delete(int id) {
 		String sql = "DELETE FROM escola WHERE id = :id";
-		jdbcTemplate.update(sql, escola);
+		jdbcTemplate.update(sql, new Object[] { id });
 	}
 
 	public Escola getById(int id) {

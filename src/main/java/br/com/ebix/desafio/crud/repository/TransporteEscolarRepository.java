@@ -27,35 +27,24 @@ public class TransporteEscolarRepository {
 	}
 
 	public void insert(TransporteEscolar transporteEscolar) {
-		String sql = "INSERT INTO transporte_escolar (nome, cnpj) VALUES (:nome, :cnpj)";
-		jdbcTemplate.update(sql, getSqlParameterByModel(transporteEscolar));
+		String sql = "INSERT INTO transporte_escolar (nome, cnpj) VALUES (?, ?)";
+		jdbcTemplate.update(sql, new Object[] { transporteEscolar.getNome(), transporteEscolar.getCnpj() });
 	}
 
 	public void update(TransporteEscolar transporteEscolar) {
-		String sql = "UPDATE transporte_escolar SET nome = :nome, cnpj = :cnpj";
-		jdbcTemplate.update(sql, getSqlParameterByModel(transporteEscolar));
+		String sql = "UPDATE transporte_escolar SET nome = ?, cnpj = ? WHERE id = ?";
+		jdbcTemplate.update(sql, new Object[] { transporteEscolar.getNome(), transporteEscolar.getCnpj(), transporteEscolar.getId() });
 	}
 
-	public void delete(TransporteEscolar transporteEscolar) {
-		String sql = "DELETE FROM transporte_escolar WHERE id = :id";
-		jdbcTemplate.update(sql, getSqlParameterByModel(transporteEscolar));
+	public void delete(int id) {
+		String sql = "DELETE FROM transporte_escolar WHERE id = ?";
+		jdbcTemplate.update(sql, new Object[] { id });
 	}
 
 	public TransporteEscolar getById(int id) {
 		String sql = "SELECT * FROM transporte_escolar WHERE id = ?";
 		
 		return (TransporteEscolar) jdbcTemplate.queryForObject(sql, new Object[] { id }, new TransporteEscolarMapper());
-	}
-
-	private SqlParameterSource getSqlParameterByModel(TransporteEscolar transporteEscolar) {
-		MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-		
-		if (transporteEscolar != null) {
-			parameterSource.addValue("id", transporteEscolar.getId());
-			parameterSource.addValue("nome", transporteEscolar.getNome());
-		}
-		
-		return parameterSource;
 	}
 
 	/**

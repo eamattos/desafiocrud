@@ -25,18 +25,18 @@ public class AlunoRepository {
 	}
 
 	public void insert(Aluno aluno) {
-		String sql = "INSERT INTO aluno (nome, endereco) VALUES (:nome, :endereco)";
-		jdbcTemplate.update(sql, aluno);
+		String sql = "INSERT INTO aluno (nome, endereco) VALUES (?, ?)";
+		jdbcTemplate.update(sql, new Object[] { aluno.getNome(), aluno.getEndereco() });
 	}
 
 	public void update(Aluno aluno) {
-		String sql = "UPDATE aluno SET nome = :nome AND endereco = :endereco";
-		jdbcTemplate.update(sql, aluno);
+		String sql = "UPDATE aluno SET nome = ? AND endereco = ? WHERE id = ?";
+		jdbcTemplate.update(sql, new Object[] { aluno.getNome(), aluno.getEndereco(), aluno.getId() });
 	}
 
-	public void delete(Aluno aluno) {
-		String sql = "DELETE FROM aluno WHERE id = :id";
-		jdbcTemplate.update(sql, aluno);
+	public void delete(int id) {
+		String sql = "DELETE FROM aluno WHERE id = ?";
+		jdbcTemplate.update(sql, new Object[] { id });
 	}
 
 	public Aluno getById(int id) {
