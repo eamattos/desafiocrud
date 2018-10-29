@@ -1,7 +1,7 @@
 package br.com.ebix.desafio.crud.model;
 
 public class Aluno {
-	private String id;
+	private Integer id;
 	private String nome;
 	private String endereco;
 	
@@ -9,16 +9,16 @@ public class Aluno {
 		super();
 	}
 	
-	public Aluno(String id) {
+	public Aluno(Integer id) {
 		super();
 		this.id = id;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -36,5 +36,10 @@ public class Aluno {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	@Override
+	public String toString() {
+		return "Aluno [nome=" + nome + ", endereco=" + endereco + "]";
 	}
 }
